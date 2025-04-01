@@ -1,61 +1,11 @@
-# R1-V: Reinforcing Super Generalization Ability in Vision Language Models with Less Than $3
-
-![image](https://github.com/user-attachments/assets/c52a448f-d666-4ca6-958b-86267d56de0e) 
-
-<p align="center">
-<a href="https://github.com/Deep-Agent/R1-V/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/Deep-Agent/R1-V.svg"></a>
-</p>
-
-> ### Roadmap for R1-V
-> We are building a general framework for RLVR in VLM. We believe in the power of **trenches** and **longtermism**.
->
-> Our Interest: General Vision-Language Intelligence & Visual/GUI Agent
-> 
-> Our Goal: 🔄 Algorithm Enhancement ⚡ Efficiency Optimization 🎯 Task Diversity 🌲 Impactful Open Source Research. 
->
-> Welcome Ideas and Contribution. Stay tuned!
-
-
-**Blogs:**
-
-
-[🎯 RLVR in Vision Language Models: Findings, Questions and Directions](https://deepagent.notion.site/rlvr-in-vlms)
-
-**Resources:** 
-
-[🤗 R1V Training Dataset: CLEVR-70k-Counting](https://huggingface.co/datasets/leonardPKU/clevr_cogen_a_train)
-
-[🤗 R1V Training Dataset: CLEVR-70k-Complex](https://huggingface.co/datasets/MMInstruction/Clevr_CoGenT_TrainA_70K_Complex)
-
-[🤗 R1V Training Dataset: GEOQA-8k](https://huggingface.co/datasets/leonardPKU/GEOQA_R1V_Train_8K)
-
-[🤗 R1-Distilled Visual Reasoning Dataset](https://huggingface.co/datasets/MMInstruction/Clevr_CoGenT_TrainA_R1)
-
-**R1-V Team:** 
-
-[Liang Chen](https://github.com/chenllliang) · [Lei Li](https://lilei-nlp.github.io) · [Haozhe Zhao](https://haozhezhao.github.io/) · [Yifan Song](https://github.com/Yifan-Song793) · [Vinci](https://github.com/0xvincii) · [Zihao Yue](https://yuezih.github.io/) 
-
-**Contributors**:
-
-<a href="https://github.com/Deep-Agent/R1-V/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Deep-Agent/R1-V&max=30" />
-</a>
-
-
+# R1V-Free: Enhancing open-ended understanding of VLLMs with Group Relative Reward
 
 ---
 
 ### Updates
 
-- 2025-02-27: vLLM trainer supports Qwen2.5-VL now, refer to `./src/scripts/run_grpo_vllm_qwen25vl.sh` for script and env update.
-- 2025-02-21: We write a [blog post](https://deepagent.notion.site/rlvr-in-vlms) summarizing the main findings and questions in our visual RLVR experimetns, check it out!
-- 2025-02-12: We fixed the batched decoding error. The orignial RL training scirpt now is 3x speeded up.
-- 2025-02-12: R1-V now supports vLLM to accelerate training (`pip install vllm==0.7.2` before use) and SFT.
-- 2025-02-11: R1-V now supports Qwen2.5-VL and [GEOQA](https://arxiv.org/abs/2312.11370) task.
-- 2025-02-06: We upload the evaluation script and polish the README. We are writing a blog post summarizing the statistics, findings and underexplored questions. 
-- 2025-02-03: We upload the training codebase.
-- 2025-02-03: We curate and upload some verified Deepseek-R1 visual reasoning traces with some special tricks (see `R1-V/src/distill_r1/`). Current training code does not rely on it, feel free to explore.
-- 2025-02-03: We release the R1-V repo.
+[//]: # (- 2025-04-02: We achieve sota performance .)
+- 2025-04-01: We release the R1V-Free repo.
 
 
 ### For contributors
@@ -63,19 +13,13 @@
 
 ---
 
-![Image](https://github.com/user-attachments/assets/e86a3ff2-a9c6-4548-8200-6c3c382d60e6)
-
-![Image](https://github.com/user-attachments/assets/b3512920-ef30-4d6d-9bfe-c64e4570a067)
-*Note: In our later experiment, we found that letting the 2b base model directly output the result instead of following `<think></think><answer></answer>` would lead to a much higher score (86%) on SuperClevr. It suggests that enforcing Chain-of-Thought reasoning may be not only unnecessary but potentially detrimental to the 2B model performance.*
-
-![image](https://github.com/user-attachments/assets/f5191b1e-dde2-42b7-9ec9-10f7f6213c12)
-
 
 ## Setup
 
 ```bash
-conda create -n r1-v python=3.11 
-conda activate r1-v
+conda create -n r1v-free python=3.11 
+conda activate r1v-free
+
 
 bash setup.sh
 ```
@@ -91,17 +35,8 @@ bash setup.sh
 
 ### Supported Training Datasets
 
-1. [🤗 R1V Training Dataset: CLEVR-70k-Counting](https://huggingface.co/datasets/leonardPKU/clevr_cogen_a_train): Item Counting Problems
-
-2. [🤗 R1V Training Dataset: CLEVR-70k-Complex](https://huggingface.co/datasets/MMInstruction/Clevr_CoGenT_TrainA_70K_Complex): Number Related Reasoning 
-
-3. [🤗 R1V Training Dataset: GEOQA-8k](https://huggingface.co/datasets/leonardPKU/GEOQA_R1V_Train_8K): Geometry Reasoning
-
 
 ### Supported Evaluations
-
-1. [SuperClevr-200](https://github.com/Deep-Agent/R1-V?tab=readme-ov-file#superclevr): Item Counting Problems
-2. [GeoQA-Test-Direct-Answer-735](https://github.com/Deep-Agent/R1-V?tab=readme-ov-file#geoqa): Geometry Reasoning
 
 ## Training
 
@@ -227,64 +162,6 @@ We also provide SFT code, please follow the script and edit the config to custom
 accelerate launch --config_file src/r1-v/configs/zero2.yaml src/r1-v/src/open_r1/sft.py --config src/r1-v/configs/qwen2vl_sft_config.yaml 
 ```
 
-## Evaluation
-
-
-### SuperCLEVR
-
-![image](https://github.com/user-attachments/assets/4f48233c-0546-432f-94e6-723f91fbd086)
-
-We provide the example script to evaluate OOD counting performance on a subset of SuperCLEVR within 1 minute. You can also modify the script and dataset to test on your own dataset.
-
-
-
-```bash
-cd ./src/eval
-wget https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/images.zip
-unzip images.zip
-
-# change the model path in the script
-python test_qwen2vl_counting_superclevr.py 
-
-# tested scores: 
-# Qwen2VL-2B-Instruct: 48.0%
-# Qwen2VL-2B-Instruct-GRPO-100step: 82.5%
-```
-
-### GEOQA
-
-<img width="379" alt="截屏2025-02-11 13 38 50" src="https://github.com/user-attachments/assets/0282872d-bfe5-40fa-ac00-8986450a0b1e" />
-<img width="379" alt="截屏2025-02-11 14 54 16" src="https://github.com/user-attachments/assets/053ebb99-5f19-4599-be51-a7c335ab2b8b" />
-
-
-
-We provide the example script to evaluate on the test set (direct answer form) of [GEOQA](https://arxiv.org/abs/2312.11370).
-
-
-```bash
-# prepare images for testing
-cd ./src/eval
-git lfs install
-git clone https://huggingface.co/datasets/Luckyjhg/Geo170K
-cd Geo170K
-unzip images.zip
-
-
-# Evaluation Script
-python test_qwen2vl_geoqa.py
-
-# tested scores: 
-# Qwen2VL-7B-Instruct: 30.63%
-# Qwen2VL-7B-Instruct-GRPO-2epochs: 38.72%
-
-# Qwen2.5VL-3B-Instruct: 35.41%
-# Qwen2.5VL-3B-Instruct-GRPO-1epochs: 47.48%
-```
-
-To enable faster inference with multiple GPUs, you could also use the script in `R1-V/src/scripts/test_grpo_geoqa_multigpu.sh`
-```
-bash src/scripts/test_grpo_geoqa_multigpu.sh
-```
 
 
 
@@ -300,10 +177,10 @@ We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Open
 
 ```bib
 @misc{chen2025r1v,
-  author       = {Chen, Liang and Li, Lei and Zhao, Haozhe and Song, Yifan and Vinci},
-  title        = {R1-V: Reinforcing Super Generalization Ability in Vision-Language Models with Less Than \$3},
-  howpublished = {\url{https://github.com/Deep-Agent/R1-V}},
-  note         = {Accessed: 2025-02-02},
+  author       = {Cheng Xize, Cai Zhengzhou and Zhao Zhou},
+  title        = {R1V-Free: Enhancing open-ended understanding of VLLMs with Group Relative Reward},
+  howpublished = {\url{https://github.com/Exgc/R1V-Free}},
+  note         = {Accessed: 2025-04-01},
   year         = {2025}
 }
 ```
