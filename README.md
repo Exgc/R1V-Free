@@ -129,12 +129,11 @@ We build upon these foundational works:
 ## 📚 Citation
 
 ```bibtex
-@article{cheng2024r1v,
-  title     = {R1V-Free: Enhancing Open-Ended Visual Understanding through Group Relative Policy Optimization},
-  author    = {Xize Cheng, Zhengzhou Cai, Zehan Wang, Tao Jin, Zhou Zhao},
-  journal   = {arXiv preprint arXiv:2404.xxxxx},
-  year      = {2024},
-  url       = {https://github.com/Exgc/R1V-Free}
+@article{Cheng_R1V-Free_Advancing_Open-World_2025,
+author = {Cheng, Xize and Cai, Zhengzhou and Wang, Zehan and Jin, Tao and Zhao, Zhou},
+title = {{R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards}},
+url = {https://github.com/Exgc/R1V-Free},
+year = {2025}
 }
 ```
 ---
