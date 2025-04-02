@@ -8,3 +8,20 @@ authors:
 title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards"
 version: 2.0.4
 date-released: 2025-04-02
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Cheng"
+    given-names: "Xize"
+  - family-names: "Cai"
+    given-names: "Zhengzhou"
+  - family-names: "Wang"
+    given-names: "Zehan"
+  - family-names: "Jin"
+    given-names: "Tao"
+  - family-names: "Zhao"
+    given-names: "Zhou"
+  year: 2025
+  title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards"
+  url: "https://github.com/Exgc/R1V-Free"
+  date-released: 2025-04-02

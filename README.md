@@ -131,7 +131,7 @@ We build upon these foundational works:
 ```bibtex
 @article{cheng2024r1v,
   title     = {R1V-Free: Enhancing Open-Ended Visual Understanding through Group Relative Policy Optimization},
-  author    = {Xize Cheng, Zhengzhou Cai, Tao Jin, Zhou Zhao},
+  author    = {Xize Cheng, Zhengzhou Cai, Zehan Wang, Tao Jin, Zhou Zhao},
   journal   = {arXiv preprint arXiv:2404.xxxxx},
   year      = {2024},
   url       = {https://github.com/Exgc/R1V-Free}
