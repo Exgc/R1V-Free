@@ -96,30 +96,6 @@ def accuracy_reward(completions, solution, image, reward_model, problem, image_p
             except Exception:
                 pass  # Keep reward as 0.0 if both methods fail
 
-        # # Try symbolic verification first
-        # try:
-        #     answer = parse(content)
-        #     if float(verify(answer, parse(sol))) > 0:
-        #         reward = 1.0
-        # except Exception:
-        #     pass  # Continue to next verification method if this fails
-        #
-        # # If symbolic verification failed, try string matching
-        # if reward == 0.0:
-        #     try:
-        #         # Extract answer from solution if it has think/answer tags
-        #         sol_match = re.search(r'<answer>(.*?)</answer>', sol)
-        #         ground_truth = sol_match.group(1).strip() if sol_match else sol.strip()
-        #
-        #         # Extract answer from content if it has think/answer tags
-        #         content_match = re.search(r'<answer>(.*?)</answer>', content)
-        #         student_answer = content_match.group(1).strip() if content_match else content.strip()
-        #
-        #         # Compare the extracted answers
-        #         if student_answer == ground_truth:
-        #             reward = 1.0
-        #     except Exception:
-        #         pass  # Keep reward as 0.0 if both methods fail
 
         rewards.append(reward)
         if os.getenv("DEBUG_MODE") == "true":
@@ -236,17 +212,16 @@ def main(script_args, training_args, model_args):
 
 
 if __name__ == "__main__":
-    internlm_path = '/mnt/private_hk/data/internlm-xcomposer2d5-7b-reward'
 
     reward_model = AutoModel.from_pretrained(
-        internlm_path,
+        'internlm/internlm-xcomposer2d5-7b-reward',
         # device_map="auto",
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
     )
-    reward_tokenizer = AutoTokenizer.from_pretrained(internlm_path, trust_remote_code=True)
+    reward_tokenizer = AutoTokenizer.from_pretrained("internlm/internlm-xcomposer2d5-7b-reward", trust_remote_code=True)
     reward_model.tokenizer = reward_tokenizer
-    GPU_id = int(os.environ['RANK']) % 2 + 6
+    GPU_id = int(os.environ['RANK']) % int(os.environ['REWARD_GPUS']) + int(os.environ['WORLD_SIZE'])
 
     reward_model.to(f'cuda:{GPU_id}').eval()
 
