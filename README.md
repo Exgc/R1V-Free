@@ -34,7 +34,7 @@ bash setup.sh
 2. Qwen2.5-VL 
 
 ### Supported Training Datasets
-
+[🤗 R1V-Free Training Dataset: RLHF-V](https://huggingface.co/datasets/Exgc/R1V-Free_RLHFV)
 
 ### Supported Evaluations
 
