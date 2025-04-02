@@ -19,8 +19,6 @@
 ```bash
 conda create -n r1v-free python=3.11 
 conda activate r1v-free
-
-
 bash setup.sh
 ```
 
@@ -56,44 +54,7 @@ We evaluate our models using **HallusionBench**, a diagnostic benchmark designed
 ### GRPO
 
 ```bash
-cd src/r1-v
-
-export DEBUG_MODE="true" # Enable Debug if you want to see the rollout of model during RL
-export DEBUG_MODE="true" # Enable Debug if you want to see the rollout of model during RL
-export LOG_PATH="./debug_log_2b.txt"
-
-torchrun --nproc_per_node="6" \
-    --nnodes="1" \
-    --node_rank="0" \
-    --master_addr="127.0.0.1" \
-    --master_port="12345" \
-    src/grpo.py \
-    --output_dir ./checkpoint \
-    --model_name_or_path /mnt/private_hk/data/Qwen2-VL-2B-Instruct \
-    --dataset_name '/mnt/private_hk/data/clevr_cogen_a_train' \
-    --deepspeed local_scripts/zero3.json \
-    --max_prompt_length 512 \
-    --max_completion_length 512 \
-    --per_device_train_batch_size 1 \
-    --gradient_accumulation_steps 2 \
-    --logging_steps 1 \
-    --bf16 \
-    --report_to wandb \
-    --gradient_checkpointing false \
-    --attn_implementation flash_attention_2 \
-    --max_pixels 401408 \
-    --num_train_epochs 2 \
-    --run_name Qwen2-VL-2B-GRPO-CLEVR-70k \
-    --save_steps 100 \
-    --save_only_model true \
-    --num_generations 8   # number of outputs G in grpo, reduce it would lead to faster training and smaller memory cost but higher variance  
-
-```
-
-
-
-```bash
-cd src/r1-v
+cd src/R1V-Free
 
 export DEBUG_MODE="true" # Enable Debug if you want to see the rollout of model during RL
 export LOG_PATH="./debug_log_2b.txt"
@@ -127,20 +88,12 @@ torchrun --nproc_per_node="6" \
     --num_generations 8   # number of outputs G in grpo, reduce it would lead to faster training and smaller memory cost but higher variance  
 ```
 
-> [!NOTE] 
-> 1. To reproduce the result, keep the per_device_train_batch_size to 1 for now, as there is a revealed bug about batched training. See the [reproduction report](https://github.com/Deep-Agent/R1-V/issues/4#issuecomment-2633348354) here. We realize it is important for effiency and are working on solving it with the community.
-> 2. If you meet **OOM Error**, you can try reduce `--num_generations`
-> 3. To use vLLM to speed up, please refer to this [script](https://github.com/Deep-Agent/R1-V/blob/main/src/scripts/run_grpo_vllm.sh).
-
-
 
 ## Acknowledgements
 
-We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Open-R1](https://github.com/huggingface/open-r1), [QwenVL](https://github.com/QwenLM/Qwen2.5-VL), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab/open-r1-multimodal) (our initial codebase), [CLEVR](https://cs.stanford.edu/people/jcjohns/clevr/), [SuperCLEVR](https://github.com/Lizw14/Super-CLEVR), [G-LLAVA](https://arxiv.org/abs/2312.11370) for providing open source resources and to build the project. Special thanks to [Kimi](https://kimi.moonshot.cn/), [bAInance Labs](https://bainancelabs.com/) for supporting computation resources and [Yuxin Wu](https://scholar.google.com/citations?user=mJQI-gUAAAAJ&hl=en), [Xinyu Zhou](https://scholar.google.com/citations?user=Jv4LCj8AAAAJ&hl=en), [Baobao Chang](https://scholar.google.com.au/citations?user=LaKNyhQAAAAJ&hl=en) for their valuable advice.
+We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Open-R1](https://github.com/huggingface/open-r1), [QwenVL](https://github.com/QwenLM/Qwen2.5-VL), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab/open-r1-multimodal), [R1-V](https://github.com/Deep-Agent/R1-V) (our initial codebase), [RLHF-V](https://arxiv.org/abs/2312.00849), [HallusionBench](https://arxiv.org/pdf/2310.14566) for providing open source resources.
 
 
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Deep-Agent/R1-V&type=Timeline)](https://star-history.com/#Deep-Agent/R1-V&Timeline)
 
 ## Citation
 
