@@ -129,7 +129,7 @@ We build upon these foundational works:
 ## 📚 Citation
 
 ```bibtex
-@article{chen2024r1v,
+@article{cheng2024r1v,
   title     = {R1V-Free: Enhancing Open-Ended Visual Understanding through Group Relative Policy Optimization},
   author    = {Xize Cheng, Zhengzhou Cai, Tao Jin, Zhou Zhao},
   journal   = {arXiv preprint arXiv:2404.xxxxx},
