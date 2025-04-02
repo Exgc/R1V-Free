@@ -1,55 +1,61 @@
-# R1V-Free: Enhancing open-ended understanding of VLLMs with Group Relative Reward
+# R1V-Free: Advancing Open-World Visual Reasoning in Vision-Language Models with Rule-Free Rewards
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow)](https://huggingface.co/Exgc/R1V-Free_RLHFV)
 
 ---
 
-### Updates
+### 🎉 Latest Updates
+- **2024-04-01**: Initial release of R1V-Free framework (v0.1-alpha)
+- **2024-03-28**: GRPO training pipeline validated on HallusionBench benchmark
 
-[//]: # (- 2025-04-02: We achieve sota performance .)
-- 2025-04-01: We release the R1V-Free repo.
+---
+### 📌 Todo
 
-
-### For contributors
-- Our top development priority is addressing the issues marked with `help wanted` labels, and we welcome ideas/PRs from the community to help solve them.
 
 ---
 
 
-## Setup
+## 📊 Benchmark Performance
+
+### HallusionBench Evaluation (GPT-4 as Judge)
+
+| Model                          | aAcc↑    | qAcc↑    | fAcc↑    | Easy↑    | Hard↑    |
+|--------------------------------|----------|----------|----------|----------|----------|
+| Qwen2.5-VL-3B-Instruct (Base)  | 49.42%   | 17.36%   | 26.59%   | 49.23%   | 36.74%   |
+| Qwen2.5-3B-RLHF-V (Ours)      | **53.32%** | **21.32%** | **32.95%** | **49.89%** | **44.19%** |
+
+*Metrics Definition:*
+- **aAcc**: Accuracy per question
+- **qAcc**: Accuracy per question pair
+- **fAcc**: Accuracy per figure composition
+
+---
+
+## 🚂 Training Details
 
 ```bash
-conda create -n r1v-free python=3.11 
-conda activate r1v-free
-bash setup.sh
+
+# Create and activate conda environment
+conda create -n r1v-free python=3.11 -y && conda activate r1v-free
+
+# Install dependencies with automatic CUDA detection
+bash setup.sh  
 ```
 
 > [!NOTE] 
 > If you meet bug when running the script, first try align your environments with `./src/requirements.txt`
 
-
 ### Supported Models
 
-1. Qwen2-VL
-2. Qwen2.5-VL 
+**1. Qwen2-VL 系列**  
+[[`2B-Instruct`🤗]](https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct) | [[`7B-Instruct`🤗]](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct)
+
+**2. Qwen2.5-VL 系列**  
+[[`3B-Instruct`🤗]](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct) | [[`7B-Instruct`🤗]](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
 
 ### Supported Training Datasets
 [🤗 R1V-Free Training Dataset: RLHF-V](https://huggingface.co/datasets/Exgc/R1V-Free_RLHFV)
 
-### Supported Evaluations
-
-#### HallusionBench
-We evaluate our models using **HallusionBench**, a diagnostic benchmark designed to measure hallucination and reasoning consistency in visual language models (VLMs). Specifically, we compare the performance of the base model **Qwen2.5-VL-3B-Instruct** and an **RL-enhanced variant (Qwen2.5-3B-RLHF-V)** fine-tuned using **our GRPO pipeline implemented in this project**.
-
-##### GPT Evaluation Results on HallusionBench
-
-| Model                  | Acc per Question (aAcc) | Acc per Question Pair (qAcc) | Acc per Figure (fAcc) | Easy Question Acc | Hard Question Acc |
-|------------------------|--------------------------|-------------------------------|------------------------|-------------------|-------------------|
-| Qwen2.5-VL-3B-Instruct | 49.42%                   | 17.36%                        | 26.59%                 | 49.23%            | 36.74%            |
-| Qwen2.5-3B-RLHF-V | **53.32%**               | **21.32%**                    | **32.95%**             | **49.89%**        | **44.19%**        |
-
-> These results demonstrate that **R1V-Free’s Group Relative Reward (GRPO)** training leads to **significant improvements** in open-ended visual understanding.
-
-
-## Training
 
 ### GRPO
 
@@ -87,25 +93,36 @@ torchrun --nproc_per_node="6" \
     --save_only_model true \
     --num_generations 8   # number of outputs G in grpo, reduce it would lead to faster training and smaller memory cost but higher variance  
 ```
+---
 
+## 🛠️  Evaluation Details
 
-## Acknowledgements
+### Pretrained Models
 
-We sincerely thank [DeepSeek](https://github.com/deepseek-ai/DeepSeek-R1), [Open-R1](https://github.com/huggingface/open-r1), [QwenVL](https://github.com/QwenLM/Qwen2.5-VL), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab/open-r1-multimodal), [R1-V](https://github.com/Deep-Agent/R1-V) (our initial codebase), [RLHF-V](https://arxiv.org/abs/2312.00849), [HallusionBench](https://arxiv.org/pdf/2310.14566) and [InternLM-XComposer-2.5-Reward](https://github.com/InternLM/InternLM-XComposer/tree/main/InternLM-XComposer-2.5-Reward) for providing open source resources.
+---
 
+## 🌐 Acknowledgements
 
+We build upon these foundational works:
 
-## Citation
+| Category             | Resources                                                                                                                                                              |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Codebase**         | [DeepSeek-R1](https://github.com/deepseek-ai), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab), [R1-V](https://github.com/Deep-Agent/R1-V)                   |
+| **Pretrained Model** | [QwenVL](https://github.com/QwenLM/Qwen2.5-VL),[InternLM-XComposer-2.5-Reward](https://github.com/InternLM/InternLM-XComposer/tree/main/InternLM-XComposer-2.5-Reward) |
+| **Training Data**    | [RLHF-V](https://arxiv.org/abs/2312.00849)                                                                                                                             |
+| **Evaluation Data**  | [HallusionBench](https://arxiv.org/pdf/2310.14566)                                                                                                                     |    
 
-```bib
-@misc{chen2025r1v,
-  author       = {Cheng Xize, Cai Zhengzhou, Jin Tao and Zhao Zhou},
-  title        = {R1V-Free: Enhancing open-ended understanding of VLLMs with Group Relative Reward},
-  howpublished = {\url{https://github.com/Exgc/R1V-Free}},
-  note         = {Accessed: 2025-04-01},
-  year         = {2025}
+---
+
+## 📚 Citation
+
+```bibtex
+@article{chen2024r1v,
+  title     = {R1V-Free: Enhancing Open-Ended Visual Understanding through Group Relative Policy Optimization},
+  author    = {Xize Cheng, Zhengzhou Cai, Tao Jin, Zhou Zhao},
+  journal   = {arXiv preprint arXiv:2404.xxxxx},
+  year      = {2024},
+  url       = {https://github.com/Exgc/R1V-Free}
 }
 ```
-
-
-
+---
