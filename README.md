@@ -8,13 +8,12 @@
 - **2024-04-01**: Initial release of R1V-Free framework (v0.1-alpha)
 
 
----
 ### 🚀 Key Features
 
 - **Target-Free**: 
 
 
----
+
 ### 📌 Todo
 
 - [x] Release the Training Code.
@@ -28,10 +27,12 @@
 
 ### HallusionBench Evaluation (GPT-4 as Judge)
 
-| Model                          | aAcc↑      | qAcc↑      | fAcc↑      | Easy↑      | Hard↑      |
-|--------------------------------|------------|------------|------------|------------|------------|
-| Qwen2.5-VL-3B-Instruct (Base)  | 49.42%     | 17.36%     | 26.59%     | 49.23%     | 36.74%     |
-| Qwen2.5-3B-RLHF-V (Ours)       | **53.32%** | **21.32%** | **32.95%** | **49.89%** | **44.19%** |
+| Model                        | aAcc↑      | qAcc↑      | fAcc↑      | Easy↑      | Hard↑      |
+|------------------------------|------------|------------|------------|------------|------------|
+| Qwen2.5-VL-3B-Instruct       |            |            |            |            |            |
+| Qwen2.5-VL-3B-Instruct (COT) | 49.42%     | 17.36%     | 26.59%     | 49.23%     | 36.74%     |
+| Qwen2.5-VL-7B-Instruct       |            |            |            |            |            |
+| R1V-Free-2.5VL-3B (ours)     | **53.32%** | **21.32%** | **32.95%** | **49.89%** | **44.19%** |
 
 *Metrics Definition:*
 - **aAcc**: Accuracy per question
@@ -107,6 +108,9 @@ torchrun --nproc_per_node="6" \
 ## 🛠️  Evaluation Details
 
 ### Pretrained Models
+[`【R1V-Free-2.5VL-3B】🤗`](https://huggingface.co/Exgc/R1V-Free-2.5VL-3B)
+
+[//]: # ([`【R1V-Free-2.5VL-7B】🤗`]&#40;https://huggingface.co/Exgc/R1V-Free-2.5VL-7B&#41;)
 
 ---
 
@@ -121,7 +125,6 @@ We build upon these foundational works:
 | **Training Data**    | [RLHF-V](https://arxiv.org/abs/2312.00849)                                                                                                                             |
 | **Evaluation Data**  | [HallusionBench](https://arxiv.org/pdf/2310.14566)                                                                                                                     |    
 
----
 
 ## 📚 Citation
 
