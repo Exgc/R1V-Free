@@ -6,10 +6,17 @@
 
 ### 🎉 Latest Updates
 - **2024-04-01**: Initial release of R1V-Free framework (v0.1-alpha)
-- **2024-03-28**: GRPO training pipeline validated on HallusionBench benchmark
 
 ---
 ### 📌 Todo
+
+- [x] Release the Training Code.
+- [ ] Release the Evaluation Code. 
+- [ ] Release the R1V-Free-3B Checkpoints.
+- [ ] 
+- [ ]
+- [ ]
+
 
 
 ---
@@ -19,10 +26,10 @@
 
 ### HallusionBench Evaluation (GPT-4 as Judge)
 
-| Model                          | aAcc↑    | qAcc↑    | fAcc↑    | Easy↑    | Hard↑    |
-|--------------------------------|----------|----------|----------|----------|----------|
-| Qwen2.5-VL-3B-Instruct (Base)  | 49.42%   | 17.36%   | 26.59%   | 49.23%   | 36.74%   |
-| Qwen2.5-3B-RLHF-V (Ours)      | **53.32%** | **21.32%** | **32.95%** | **49.89%** | **44.19%** |
+| Model                          | aAcc↑      | qAcc↑      | fAcc↑      | Easy↑      | Hard↑      |
+|--------------------------------|------------|------------|------------|------------|------------|
+| Qwen2.5-VL-3B-Instruct (Base)  | 49.42%     | 17.36%     | 26.59%     | 49.23%     | 36.74%     |
+| Qwen2.5-3B-RLHF-V (Ours)       | **53.32%** | **21.32%** | **32.95%** | **49.89%** | **44.19%** |
 
 *Metrics Definition:*
 - **aAcc**: Accuracy per question
