@@ -38,6 +38,19 @@ bash setup.sh
 
 ### Supported Evaluations
 
+#### HallusionBench
+We evaluate our models using **HallusionBench**, a diagnostic benchmark designed to measure hallucination and reasoning consistency in visual language models (VLMs). Specifically, we compare the performance of the base model **Qwen2.5-VL-3B-Instruct** and an **RL-enhanced variant (Qwen2.5-3B-RLHF-V)** fine-tuned using **our GRPO pipeline implemented in this project**.
+
+##### GPT Evaluation Results on HallusionBench
+
+| Model                  | Acc per Question (aAcc) | Acc per Question Pair (qAcc) | Acc per Figure (fAcc) | Easy Question Acc | Hard Question Acc |
+|------------------------|--------------------------|-------------------------------|------------------------|-------------------|-------------------|
+| Qwen2.5-VL-3B-Instruct | 49.42%                   | 17.36%                        | 26.59%                 | 49.23%            | 36.74%            |
+| Qwen2.5-3B-RLHF-V | **53.32%**               | **21.32%**                    | **32.95%**             | **49.89%**        | **44.19%**        |
+
+> These results demonstrate that **R1V-Free’s Group Relative Reward (GRPO)** training leads to **significant improvements** in open-ended visual understanding.
+
+
 ## Training
 
 ### GRPO
