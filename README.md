@@ -1,4 +1,5 @@
-# R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards
+# R1V-Free: Open-World Visual Reasoning with Label-Free AI Feedback
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow)](https://huggingface.co/Exgc/R1V-Free_RLHFV)
 
@@ -18,7 +19,7 @@
 
 - [x] Release the Training Code.
 - [ ] Release the Evaluation Code. 
-- [ ] Release the R1V-Free-3B Checkpoints.
+- [x] Release the R1V-Free-3B Checkpoints.
 
 ---
 
