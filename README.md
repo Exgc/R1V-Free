@@ -28,7 +28,8 @@
 
 ### MMVet Evaluation (GPT-4 as Judge)
 
-![image](./assets/mmvet.png)
+<img src="./assets/mmvet.png" width="500" />
+
 
 R1V-Free（ours）
 ---
