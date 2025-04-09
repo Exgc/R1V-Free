@@ -28,13 +28,9 @@
 
 ### MMVet Evaluation (GPT-4 as Judge)
 
-| Model (3B)                   | Acc (%)   | Model (7B)                   | Acc (%)   | Model (38B+)            | Acc (%) |
-| ---------------------------- | --------- | ---------------------------- | --------- | ----------------------- | ------- |
-| Qwen2.5-VL-3B-Instruct       | 60.0      | Qwen2.5-VL-7B-Instruct       | 69.7      | InternVL2.5-38B-MPO     | 72.6    |
-| **R1V-Free-2.5VL-3B (ours)** | **66.42** | **R1V-Free-2.5VL-7B (ours)** | **72.93** | InternVL2.5-78B-MPO     | 73.5    |
-|                              |           |                              |           | Qwen2-VL-72B-Instruct   | 73.9    |
-|                              |           |                              |           | Qwen2.5-VL-72B-Instruct | 76.9    |
+![image](./assets/mmvet.pdf)
 
+R1V-Free（ours）
 ---
 
 ## 🚂 Training Details

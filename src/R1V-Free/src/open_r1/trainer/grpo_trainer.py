@@ -159,6 +159,7 @@ class Qwen2VLGRPOTrainer(Trainer):
             max_pixels: Optional[int] = 12845056,
             min_pixels: Optional[int] = 3136,
             attn_implementation: str = "flash_attention_2",
+            torch_dtype: str = "bfloat16",
     ):
         # Args
         if args is None:
@@ -170,6 +171,10 @@ class Qwen2VLGRPOTrainer(Trainer):
         # Trained model
         model_init_kwargs = args.model_init_kwargs or {}
         model_init_kwargs["attn_implementation"] = attn_implementation
+
+        if model_init_kwargs.get("torch_dtype") is None:
+            model_init_kwargs["torch_dtype"] = torch_dtype
+
         if isinstance(model, str):
             model_id = model
             torch_dtype = model_init_kwargs.get("torch_dtype")
