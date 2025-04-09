@@ -5,7 +5,7 @@ authors:
     given-names: Xize
   - family-names: Cai
     given-names: Zhengzhou
-title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards"
+title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free AI Feedback"
 version: 2.0.4
 date-released: 2025-04-02
 preferred-citation:
@@ -17,11 +17,15 @@ preferred-citation:
     given-names: "Zhengzhou"
   - family-names: "Wang"
     given-names: "Zehan"
+  - family-names: "Ji"
+    given-names: "Shengpeng"
+  - family-names: "Jiang"
+    given-names: "Ziyue"
   - family-names: "Jin"
     given-names: "Tao"
   - family-names: "Zhao"
     given-names: "Zhou"
   year: 2025
-  title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards"
+  title: "R1V-Free: Advancing Open-World Visual Reasoning with Label-Free AI Feedback"
   url: "https://github.com/Exgc/R1V-Free"
   date-released: 2025-04-02

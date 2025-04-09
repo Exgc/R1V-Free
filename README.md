@@ -1,7 +1,8 @@
 # R1V-Free: Open-World Visual Reasoning with Label-Free AI Feedback
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow)](https://huggingface.co/Exgc/R1V-Free_RLHFV)
+
+[//]: # ([![Hugging Face Datasets]&#40;https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow&#41;]&#40;https://huggingface.co/Exgc/R1V-Free_RLHFV&#41;)
 
 ---
 
@@ -11,7 +12,9 @@
 
 ### 🚀 Key Features
 
-- **Target-Free**: 
+- **Label-Free** 🔄: No need for ground truth labels as supervision.
+
+- **Open-ended** 🌍: Capable of training on open-ended questions, enhancing the ability to understand open-world visual concepts.
 
 
 
@@ -19,14 +22,16 @@
 
 - [x] Release the Training Code.
 - [ ] Release the Evaluation Code. 
-- [x] Release the R1V-Free-3B Checkpoints.
+- [x] Release the R1V-Free-3B Checkpoint.
+- [ ] Release the R1V-Free-7B Checkpoint.
+- [ ] Release the Wandb records of the training process.
 
 ---
 
 
 ## 📊 Benchmark Performance
 
-### MMVet Evaluation (GPT-4 as Judge)
+### MMVet Evaluation
 
 <img src="./assets/mmvet.png" width="500" />
 
@@ -66,7 +71,7 @@ bash setup.sh
 cd src/R1V-Free
 
 export DEBUG_MODE="true" # Enable Debug if you want to see the rollout of model during RL
-export LOG_PATH="./debug_log_2b.txt"
+export LOG_PATH="./debug_log.txt"
 export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 export REWARD_GPUS=<GPU_NUMS of REWARD_MODEL>
 
@@ -113,10 +118,10 @@ We build upon these foundational works:
 
 | Category             | Resources                                                                                                                                                              |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Codebase**         | [DeepSeek-R1](https://github.com/deepseek-ai), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab), [R1-V](https://github.com/Deep-Agent/R1-V)                   |
+| **Codebase**         | [DeepSeek-R1](https://github.com/deepseek-ai), [Open-R1-Multimodal](https://github.com/EvolvingLMMs-Lab), [R1-V](https://github.com/Deep-Agent/R1-V), [VLMEvalKit]()   |
 | **Pretrained Model** | [QwenVL](https://github.com/QwenLM/Qwen2.5-VL),[InternLM-XComposer-2.5-Reward](https://github.com/InternLM/InternLM-XComposer/tree/main/InternLM-XComposer-2.5-Reward) |
 | **Training Data**    | [RLHF-V](https://arxiv.org/abs/2312.00849)                                                                                                                             |
-| **Evaluation Data**  | [HallusionBench](https://arxiv.org/pdf/2310.14566)                                                                                                                     |    
+| **Evaluation Data**  | [MMVet]()                                                                                                                                                              |    
 
 
 ## 📚 Citation
