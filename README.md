@@ -12,11 +12,11 @@
 
 ### 🚀 Key Features
 
+- **AI-Feedback** 🤖: The first visual reasoning model that uses AI feedback as reward.
+
 - **Label-Free** 🔄: No need for ground truth labels as supervision.
 
 - **Open-ended** 🌍: Capable of training on open-ended questions, enhancing the ability to understand open-world visual concepts.
-
-
 
 ### 📌 Todo
 
