@@ -21,10 +21,10 @@
 ### 📌 Todo
 
 - [x] Release the Training Code.
-- [ ] Release the Evaluation Code. 
+- [x] Release the Evaluation Code. 
 - [x] Release the R1V-Free-3B Checkpoint.
 - [x] Release the R1V-Free-7B Checkpoint.
-- [ ] Release the Wandb records of the training process.
+- [x] Release the Wandb records of the training process.
 
 ---
 
