@@ -101,7 +101,6 @@ torchrun --nproc_per_node="6" \
     --save_only_model true \
     --num_generations 8   # number of outputs G in grpo, reduce it would lead to faster training and smaller memory cost but higher variance  
 ```
----
 
 ## 🛠️  Evaluation Details
 
