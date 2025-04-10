@@ -36,7 +36,17 @@
 <img src="./assets/mmvet.png" width="500" />
 
 
-R1V-Free（ours）
+### W&B Charts
+
+| acc_reward | format_reward |
+|--------|--------|
+| <img src="./assets/R1V-Free-VL-7B/acc_reward.png" width="500" /> | <img src="./assets/R1V-Free-VL-7B/format_reward.png" width="500" /> |
+
+| completion length | reward_std |
+|--------|--------|
+| <img src="./assets/R1V-Free-VL-7B/length.png" width="500" /> | <img src="./assets/R1V-Free-VL-7B/reward_std.png" width="500" /> |
+
+
 ---
 
 ## 🚂 Training Details
