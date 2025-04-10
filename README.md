@@ -119,6 +119,30 @@ torchrun --nproc_per_node="6" \
 
 [`【R1V-Free-2.5VL-7B】🤗`](https://huggingface.co/Exgc/R1V-Free-2.5VL-7B)
 
+### Evaluation Instructions
+
+We evaluate our pretrained models using **[VLMEvalKit](https://github.com/open-compass/VLMEvalKit)**.
+
+1. **Install VLMEvalKit**
+   Navigate to the `src/VLMEvalKit` directory and run:
+
+   ```bash
+   pip install -e .
+   ```
+2. **Set up the API key (if required)**
+   To use LLM APIs as the judge or choice extractor, you need to setup API keys in `src/VLMEvalKit/.env`.
+3. **Run  Evaluation**
+   For instance, to evaluate our R1V-Free-2.5VL-3B on MMVet dataset, navigate to `src/VLMEvalKit` and run
+   ```bash
+   python run.py --data MMVet --model R1V-Free-2.5VL-3B --verbose --reuse
+   ```
+   - `--verbose`: Shows detailed evaluation logs.
+   - `--reuse`: Enables reuse of previously computed results if available.
+
+> [!NOTE]
+>  For other benchmarks supported by VLMEvalKit, you can replace `--data MMVet` with datasets like `HallusionBench`, `MathVista`,  etc.
+
+
 ---
 
 ## 🌐 Acknowledgements
