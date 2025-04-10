@@ -1002,7 +1002,7 @@ qwen2vl_series = {
     
     
     ###################################################
-    "R1V-Free-2.5V-3B": partial(
+    "R1V-Free-2.5VL-3B": partial(
         Qwen2VLChat,
         model_path="Exgc/R1V-Free-2.5VL-3B", # R1V-Free-3B model path
         min_pixels=1280 * 28 * 28,
@@ -1010,7 +1010,7 @@ qwen2vl_series = {
         use_custom_prompt=True,  
     ),
     
-    "R1V-Free-2.5V-7B": partial(
+    "R1V-Free-2.5VL-7B": partial(
         Qwen2VLChat,
         model_path="Exgc/R1V-Free-2.5VL-7B",
         min_pixels=1280 * 28 * 28,
