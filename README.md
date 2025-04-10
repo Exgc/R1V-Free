@@ -128,8 +128,8 @@ We build upon these foundational works:
 
 ```bibtex
 @article{Cheng_R1V-Free_Advancing_Open-World_2025,
-author = {Cheng, Xize and Cai, Zhengzhou and Wang, Zehan and Jin, Tao and Zhao, Zhou},
-title = {{R1V-Free: Advancing Open-World Visual Reasoning with Label-Free Rewards}},
+author = {Cheng, Xize and Cai, Zhengzhou and Wang, Zehan and Ji, Shengpeng and Jiang, Ziyue and Jin, Tao and Zhao, Zhou},
+title = {{R1V-Free: Advancing Open-World Visual Reasoning with Label-Free AI Feedback}},
 url = {https://github.com/Exgc/R1V-Free},
 year = {2025}
 }
