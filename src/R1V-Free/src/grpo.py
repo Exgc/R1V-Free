@@ -31,14 +31,10 @@ import tempfile
 import os
 import shutil
 
-# 手动创建临时文件夹
+# make the temp dir
 temp_dir = tempfile.mkdtemp()
 
 import pdb
-
-
-# os.environ['WANDB_API_KEY'] = '07f2f7a5896a56faae572e0349fb940cd0c195f1'
-
 
 @dataclass
 class GRPOScriptArguments(ScriptArguments):
@@ -80,7 +76,9 @@ def accuracy_reward(completions, solution, image, reward_model, problem, image_p
 
                 # Extract answer from content if it has think/answer tags
                 content_match = re.search(r'<answer>(.*?)</answer>', content)
-                student_answer = content_match.group(1).strip() if content_match else content.strip()
+                # student_answer = content_match.group(1).strip() if content_match else content.strip()
+                student_answer = content_match.group(1).strip() if content_match else "I don't know."
+
                 chat = [
                     {"role": "user",
                      "content": pblm},
@@ -92,34 +90,9 @@ def accuracy_reward(completions, solution, image, reward_model, problem, image_p
                     with torch.autocast(device_type='cuda', dtype=torch.bfloat16):
                         score = reward_model.get_score(chat, [os.path.join(temp_dir, img_path)], hd_num=9)
                         if score > 0:
-                            reward = 1.0
+                            reward = score
             except Exception:
                 pass  # Keep reward as 0.0 if both methods fail
-
-        # # Try symbolic verification first
-        # try:
-        #     answer = parse(content)
-        #     if float(verify(answer, parse(sol))) > 0:
-        #         reward = 1.0
-        # except Exception:
-        #     pass  # Continue to next verification method if this fails
-        #
-        # # If symbolic verification failed, try string matching
-        # if reward == 0.0:
-        #     try:
-        #         # Extract answer from solution if it has think/answer tags
-        #         sol_match = re.search(r'<answer>(.*?)</answer>', sol)
-        #         ground_truth = sol_match.group(1).strip() if sol_match else sol.strip()
-        #
-        #         # Extract answer from content if it has think/answer tags
-        #         content_match = re.search(r'<answer>(.*?)</answer>', content)
-        #         student_answer = content_match.group(1).strip() if content_match else content.strip()
-        #
-        #         # Compare the extracted answers
-        #         if student_answer == ground_truth:
-        #             reward = 1.0
-        #     except Exception:
-        #         pass  # Keep reward as 0.0 if both methods fail
 
         rewards.append(reward)
         if os.getenv("DEBUG_MODE") == "true":
@@ -183,7 +156,7 @@ def main(script_args, training_args, model_args):
     #         ],
     #     }
 
-    QUESTION_TEMPLATE = "{Question}  Output the thinking process in <think> </think> and final answer (number) in <answer> </answer> tags."
+    QUESTION_TEMPLATE = "{Question}  Output the thinking process in <think> </think> and final answer in <answer> </answer> tags."
 
     def make_conversation_image(example):
         return {
