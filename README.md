@@ -23,7 +23,7 @@
 - [x] Release the Training Code.
 - [ ] Release the Evaluation Code. 
 - [x] Release the R1V-Free-3B Checkpoint.
-- [ ] Release the R1V-Free-7B Checkpoint.
+- [x] Release the R1V-Free-7B Checkpoint.
 - [ ] Release the Wandb records of the training process.
 
 ---
@@ -108,7 +108,7 @@ torchrun --nproc_per_node="6" \
 ### Pretrained Models
 [`【R1V-Free-2.5VL-3B】🤗`](https://huggingface.co/Exgc/R1V-Free-2.5VL-3B)
 
-[//]: # ([`【R1V-Free-2.5VL-7B】🤗`]&#40;https://huggingface.co/Exgc/R1V-Free-2.5VL-7B&#41;)
+[`【R1V-Free-2.5VL-7B】🤗`](https://huggingface.co/Exgc/R1V-Free-2.5VL-7B)
 
 ---
 
