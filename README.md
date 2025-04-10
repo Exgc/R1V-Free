@@ -36,7 +36,7 @@
 <img src="./assets/mmvet.png" width="500" />
 
 
-### W&B Charts
+## 📊 W&B Charts
 
 | acc_reward | format_reward |
 |--------|--------|
