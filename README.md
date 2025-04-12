@@ -7,6 +7,8 @@
 ---
 
 ### 🔥Latest Updates
+- **2024-04-10**: All training code are released.
+- **2024-04-08**: All checkpoints (R1V-Free-VL-3B, R1V-Free-VL-7B) are released.
 - **2024-04-01**: Initial release of R1V-Free framework (v0.1-alpha)
 
 
